@@ -3,9 +3,9 @@ package za.co.discovery.assignment.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import za.co.discovery.assignment.Models.Planet;
-import za.co.discovery.assignment.Models.Route;
+import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Traffic;
+import za.co.discovery.assignment.Models.Vertex;
 import za.co.discovery.assignment.Services.ExcelDataExtractionService;
 
 import java.io.File;
@@ -27,8 +27,8 @@ public class RootController {
         excelDataExtractionService = new ExcelDataExtractionService(new File(classLoader.getResource("worksheet.xlsx").getFile()));
 
         try {
-            ArrayList<Planet> planets = excelDataExtractionService.readSheet1();
-            ArrayList<Route> routes = excelDataExtractionService.readSheet2();
+            ArrayList<Vertex> vertexes = excelDataExtractionService.readSheet1();
+            ArrayList<Edge> edges = excelDataExtractionService.readSheet2();
             ArrayList<Traffic> traffic = excelDataExtractionService.readSheet3();
 
         }

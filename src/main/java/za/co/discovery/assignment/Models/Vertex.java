@@ -6,9 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity(name = "planets")
+@Entity(name = "vertices")
 @Table
-public class Planet implements Serializable{
+public class Vertex implements Serializable {
 
     @Id
     @Column
@@ -16,11 +16,11 @@ public class Planet implements Serializable{
     @Column
     private String name;
 
-    public Planet() {
+    public Vertex() {
 
     }
 
-    public Planet(String node, String name) {
+    public Vertex(String node, String name) {
         this.node = node;
         this.name = name;
     }
@@ -29,7 +29,7 @@ public class Planet implements Serializable{
         this.node = node;
     }
 
-    public java.lang.String getNode() {
+    public String getNode() {
         return node;
     }
 
@@ -37,7 +37,7 @@ public class Planet implements Serializable{
         this.name = name;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return name;
     }
 }

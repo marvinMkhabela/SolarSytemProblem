@@ -8,53 +8,54 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import za.co.discovery.assignment.Models.Route;
+import za.co.discovery.assignment.Models.Vertex;
 
 import java.util.List;
 
 @Service
 @Transactional
-public class RouteDAO {
+public class VertexDAO {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    public RouteDAO(SessionFactory sessionFactory) {
+    public VertexDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public void save(Route route) {
+    public void save(Vertex vertex) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(route);
+        session.save(vertex);
     }
 
-    public void update(Route route) {
+    public void update(Vertex vertex) {
         Session session = sessionFactory.getCurrentSession();
-        session.merge(route);
+        session.merge(vertex);
     }
 
-    public Route retrieve(int routeid) {
+    public Vertex retrieve(String node) {
         Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Route.class);
-        criteria.add(Restrictions.eq("routeId", routeid));
+        Criteria criteria = session.createCriteria(Vertex.class);
+        criteria.add(Restrictions.eq("node", node));
 
-        return (Route) criteria.uniqueResult();
+        return (Vertex) criteria.uniqueResult();
     }
 
-    public List<Route> retrieveAll() {
+    public List<Vertex> retrieveAll() {
         Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Route.class);
+        Criteria criteria = session.createCriteria(Vertex.class);
 
-        return (List<Route>) criteria.list();
+        return (List<Vertex>) criteria.list();
     }
 
-    public int delete(int routeid) {
+    public int delete(String node) {
 
         Session session = sessionFactory.getCurrentSession();
-        String qry = "DELETE FROM routes AS R WHERE R.routeId = :targetroute";
+        String qry = "DELETE FROM vertices AS V WHERE V.node = :targetnode";
         Query query = session.createQuery(qry);
-        query.setParameter("targetroute", routeid);
+        query.setParameter("targetnode", node);
 
         return query.executeUpdate();
     }
+
 }

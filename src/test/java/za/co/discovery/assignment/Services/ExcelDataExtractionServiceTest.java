@@ -2,9 +2,9 @@ package za.co.discovery.assignment.Services;
 
 import org.junit.Before;
 import org.junit.Test;
-import za.co.discovery.assignment.Models.Planet;
-import za.co.discovery.assignment.Models.Route;
+import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Traffic;
+import za.co.discovery.assignment.Models.Vertex;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,18 +28,18 @@ public class ExcelDataExtractionServiceTest {
     public void readSheet1ExtractsTheAppropriateDataFromSheet() {
 
         //Set up fixture
-        ArrayList<Planet> expectedPlanets = new ArrayList<Planet>();
-        Planet planet1 = new Planet("A", "Earth");
-        expectedPlanets.add(planet1);
-        Planet planet2 = new Planet("B", "Moon");
-        expectedPlanets.add(planet2);
+        ArrayList<Vertex> expectedVertexes = new ArrayList<Vertex>();
+        Vertex vertex1 = new Vertex("A", "Earth");
+        expectedVertexes.add(vertex1);
+        Vertex vertex2 = new Vertex("B", "Moon");
+        expectedVertexes.add(vertex2);
 
         //Exercise SUT
         try {
-            ArrayList<Planet> actualPlanets = excelDataExtractionService.readSheet1();
+            ArrayList<Vertex> actualVertexes = excelDataExtractionService.readSheet1();
 
             //Verify Behaviour
-            assertThat(expectedPlanets, sameBeanAs(actualPlanets));
+            assertThat(expectedVertexes, sameBeanAs(actualVertexes));
         } catch (IOException e) {
             System.out.println("Caught IOException in read sheet 1 test");
         }
@@ -51,18 +51,18 @@ public class ExcelDataExtractionServiceTest {
     public void readSheet2ExtractsTheAppropriateDataFromSheet() {
 
         //Set up fixture
-        ArrayList<Route> expectedRoutes = new ArrayList<Route>();
-        Route route1 = new Route(1, "A", "B", 0.44f);
-        expectedRoutes.add(route1);
-        Route route2 = new Route(2, "A", "C", 1.89f);
-        expectedRoutes.add(route2);
+        ArrayList<Edge> expectedEdges = new ArrayList<Edge>();
+        Edge edge1 = new Edge(1, "A", "B", 0.44f);
+        expectedEdges.add(edge1);
+        Edge edge2 = new Edge(2, "A", "C", 1.89f);
+        expectedEdges.add(edge2);
 
         //Exercise SUT
         try {
-            ArrayList<Route> actualRoutes = excelDataExtractionService.readSheet2();
+            ArrayList<Edge> actualEdges = excelDataExtractionService.readSheet2();
 
             //Verify Behaviour
-            assertThat(expectedRoutes, sameBeanAs(actualRoutes));
+            assertThat(expectedEdges, sameBeanAs(actualEdges));
         } catch (IOException e) {
             System.out.println("Caught IOException in read sheet 2 test");
         }

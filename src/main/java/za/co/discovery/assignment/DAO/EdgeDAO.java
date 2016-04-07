@@ -8,53 +8,53 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import za.co.discovery.assignment.Models.Planet;
+import za.co.discovery.assignment.Models.Edge;
 
 import java.util.List;
 
 @Service
 @Transactional
-public class PlanetDAO {
+public class EdgeDAO {
 
     private SessionFactory sessionFactory;
 
     @Autowired
-    public PlanetDAO(SessionFactory sessionFactory) {
+    public EdgeDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-    public void save(Planet planet) {
+
+    public void save(Edge edge) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(planet);
+        session.save(edge);
     }
 
-    public void update(Planet planet) {
+    public void update(Edge edge) {
         Session session = sessionFactory.getCurrentSession();
-        session.merge(planet);
+        session.merge(edge);
     }
 
-    public Planet retrieve(String node) {
+    public Edge retrieve(int edgeId) {
         Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Planet.class);
-        criteria.add(Restrictions.eq("node", node));
+        Criteria criteria = session.createCriteria(Edge.class);
+        criteria.add(Restrictions.eq("edgeId", edgeId));
 
-        return (Planet)criteria.uniqueResult();
+        return (Edge) criteria.uniqueResult();
     }
 
-    public List<Planet> retrieveAll() {
+    public List<Edge> retrieveAll() {
         Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Planet.class);
+        Criteria criteria = session.createCriteria(Edge.class);
 
-        return (List<Planet>) criteria.list();
+        return (List<Edge>) criteria.list();
     }
 
-    public int delete(String node) {
+    public int delete(int edgeId) {
 
         Session session = sessionFactory.getCurrentSession();
-        String qry = "DELETE FROM planets AS P WHERE P.node = :targetnode";
+        String qry = "DELETE FROM edges AS E WHERE E.edgeId = :targetroute";
         Query query = session.createQuery(qry);
-        query.setParameter("targetnode", node);
+        query.setParameter("targetroute", edgeId);
 
         return query.executeUpdate();
     }
-
 }

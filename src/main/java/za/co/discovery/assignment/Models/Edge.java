@@ -6,37 +6,47 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity(name = "routes")
+@Entity(name = "edges")
 @Table
-public class Route implements Serializable {
+public class Edge implements Serializable {
 
     @Id
     @Column
-    private int routeId;
+    private int edgeId;
     @Column
     private String origin;
     @Column
     private String destination;
     @Column
     private float distance;
+    @Column
+    private float totalTravelTime;
 
-    public Route() {
+    public Edge() {
 
     }
 
-    public Route(int routeId, String origin, String destination, float distance) {
-        this.routeId = routeId;
+    public Edge(int edgeId, String origin, String destination, float distance) {
+        this.edgeId = edgeId;
         this.origin = origin;
         this.destination = destination;
         this.distance = distance;
     }
 
-    public int getRouteId() {
-        return routeId;
+    public Edge(int edgeId, String origin, String destination, float distance, float totalTravelTime) {
+        this.edgeId = edgeId;
+        this.origin = origin;
+        this.destination = destination;
+        this.distance = distance;
+        this.totalTravelTime = totalTravelTime;
     }
 
-    public void setRouteId(int routeId) {
-        this.routeId = routeId;
+    public int getEdgeId() {
+        return edgeId;
+    }
+
+    public void setEdgeId(int edgeId) {
+        this.edgeId = edgeId;
     }
 
     public String getOrigin() {
@@ -61,6 +71,14 @@ public class Route implements Serializable {
 
     public void setDistance(float distance) {
         this.distance = distance;
+    }
+
+    public float getTotalTravelTime() {
+        return totalTravelTime;
+    }
+
+    public void setTotalTravelTime(float totalTravelTime) {
+        this.totalTravelTime = totalTravelTime;
     }
 
 }

@@ -5,9 +5,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
-import za.co.discovery.assignment.Models.Planet;
-import za.co.discovery.assignment.Models.Route;
+import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Traffic;
+import za.co.discovery.assignment.Models.Vertex;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,32 +28,32 @@ public class ExcelDataExtractionService {
         this.file = file;
     }
 
-    public ArrayList<Planet> readSheet1() throws IOException {
+    public ArrayList<Vertex> readSheet1() throws IOException {
 
-        ArrayList objectList = new ArrayList<Planet>();
+        ArrayList objectList = new ArrayList<Vertex>();
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
 
-            Planet planet;
+            Vertex vertex;
             Cell cell;
             Row row;
             Iterator<Cell> cellIterator;
 
             rowIterator.next();
             while (rowIterator.hasNext()) {
-                planet = new Planet();
+                vertex = new Vertex();
                 row = rowIterator.next();
                 cellIterator = row.cellIterator();
 
                 cell = cellIterator.next();
-                planet.setNode(cell.getStringCellValue());
+                vertex.setNode(cell.getStringCellValue());
                 cell = cellIterator.next();
-                planet.setName(cell.getStringCellValue());
+                vertex.setName(cell.getStringCellValue());
 
-                objectList.add(planet);
+                objectList.add(vertex);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
@@ -63,36 +63,36 @@ public class ExcelDataExtractionService {
 
     }
 
-    public ArrayList<Route> readSheet2() throws IOException {
+    public ArrayList<Edge> readSheet2() throws IOException {
 
-        ArrayList objectList = new ArrayList<Route>();
+        ArrayList objectList = new ArrayList<Edge>();
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
             XSSFSheet sheet = workbook.getSheetAt(1);
             Iterator<Row> rowIterator = sheet.iterator();
 
-            Route route;
+            Edge edge;
             Cell cell;
             Row row;
             Iterator<Cell> cellIterator;
 
             rowIterator.next();
             while (rowIterator.hasNext()) {
-                route = new Route();
+                edge = new Edge();
                 row = rowIterator.next();
                 cellIterator = row.cellIterator();
 
                 cell = cellIterator.next();
-                route.setRouteId((int) cell.getNumericCellValue());
+                edge.setEdgeId((int) cell.getNumericCellValue());
                 cell = cellIterator.next();
-                route.setOrigin(cell.getStringCellValue());
+                edge.setOrigin(cell.getStringCellValue());
                 cell = cellIterator.next();
-                route.setDestination(cell.getStringCellValue());
+                edge.setDestination(cell.getStringCellValue());
                 cell = cellIterator.next();
-                route.setDistance((float) cell.getNumericCellValue());
+                edge.setDistance((float) cell.getNumericCellValue());
 
-                objectList.add(route);
+                objectList.add(edge);
             }
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");

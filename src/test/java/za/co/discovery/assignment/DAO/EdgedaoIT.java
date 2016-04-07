@@ -14,7 +14,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.discovery.assignment.Configuration.DataSourceConfig;
 import za.co.discovery.assignment.Configuration.PersistenceConfig;
-import za.co.discovery.assignment.Models.Route;
+import za.co.discovery.assignment.Models.Edge;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,19 +24,19 @@ import static com.shazam.shazamcrest.matcher.Matchers.sameBeanAs;
 
 @Transactional
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Route.class, RouteDAO.class, DataSourceConfig.class,
+@ContextConfiguration(classes = {Edge.class, EdgeDAO.class, DataSourceConfig.class,
         PersistenceConfig.class},
                 loader = AnnotationConfigContextLoader.class)
 
-public class RoutedaoIT {
+public class EdgedaoIT {
 
     @Autowired
     private SessionFactory sessionFactory;
-    private RouteDAO routeDAO;
+    private EdgeDAO edgeDAO;
 
     @Before
     public void initilizeTest() {
-        routeDAO = new RouteDAO(sessionFactory);
+        edgeDAO = new EdgeDAO(sessionFactory);
     }
 
     @Test
@@ -44,16 +44,16 @@ public class RoutedaoIT {
 
         //Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Route route = new Route(2,"A", "B", 0.2f);
-        List<Route> expectedRoutes = Arrays.asList(route);
+        Edge edge = new Edge(2, "A", "B", 0.2f);
+        List<Edge> expectedEdges = Arrays.asList(edge);
 
         //Exercise SUT
-        routeDAO.save(route);
-        Criteria criteria = session.createCriteria(Route.class);
-        List<Route> actualRoutes = (List<Route>) criteria.list();
+        edgeDAO.save(edge);
+        Criteria criteria = session.createCriteria(Edge.class);
+        List<Edge> actualEdges = (List<Edge>) criteria.list();
 
         //Verify Behaviour
-        assertThat(actualRoutes, sameBeanAs(expectedRoutes));
+        assertThat(actualEdges, sameBeanAs(expectedEdges));
     }
 
     @Test
@@ -61,19 +61,19 @@ public class RoutedaoIT {
 
         // Set up fixture
         Session session = sessionFactory.getCurrentSession();
-        Route route = new Route(3,"A", "B", 0.3f);
-        Route correctRoute = new Route(3,"C", "D", 3f);
-        List<Route> expectedRoutes = Arrays.asList(correctRoute);
-        session.save(route);
+        Edge edge = new Edge(3, "A", "B", 0.3f);
+        Edge correctEdge = new Edge(3, "C", "D", 3f);
+        List<Edge> expectedEdges = Arrays.asList(correctEdge);
+        session.save(edge);
 
         // Exercise SUT
-        routeDAO.update(correctRoute);
-        Criteria criteria = session.createCriteria(Route.class);
-        criteria.add(Restrictions.eq("routeId", correctRoute.getRouteId()));
-        List<Route> actualRoutes = (List<Route>) criteria.list();
+        edgeDAO.update(correctEdge);
+        Criteria criteria = session.createCriteria(Edge.class);
+        criteria.add(Restrictions.eq("edgeId", correctEdge.getEdgeId()));
+        List<Edge> actualEdges = (List<Edge>) criteria.list();
 
         // Verify Behaviour
-        assertThat(actualRoutes, sameBeanAs(expectedRoutes));
+        assertThat(actualEdges, sameBeanAs(expectedEdges));
     }
 
     @Test
@@ -81,16 +81,16 @@ public class RoutedaoIT {
 
         //Set up fixture
         Session session = sessionFactory.getCurrentSession();
-        Route route = new Route(5, "A", "B", 0.5f);
-        Route expectedRoute = new Route(7, "C", "D", 0.7f);
-        session.save(route);
-        session.save(expectedRoute);
+        Edge edge = new Edge(5, "A", "B", 0.5f);
+        Edge expectedEdge = new Edge(7, "C", "D", 0.7f);
+        session.save(edge);
+        session.save(expectedEdge);
 
         //Exercise SUT
-        Route retrievedRoute = routeDAO.retrieve(expectedRoute.getRouteId());
+        Edge retrievedEdge = edgeDAO.retrieve(expectedEdge.getEdgeId());
 
         //Verify Behaviour
-        assertThat(retrievedRoute, sameBeanAs(expectedRoute));
+        assertThat(retrievedEdge, sameBeanAs(expectedEdge));
     }
 
     @Test
@@ -98,17 +98,17 @@ public class RoutedaoIT {
 
         //Set up fixture
         Session session = sessionFactory.getCurrentSession();
-        Route route0 = new Route(11, "A", "B", 0.11f);
-        Route route1 = new Route(13, "C", "D", 0.13f);
-        List<Route> expectedRoutes = Arrays.asList(route0, route1);
-        session.save(route0);
-        session.save(route1);
+        Edge edge0 = new Edge(11, "A", "B", 0.11f);
+        Edge edge1 = new Edge(13, "C", "D", 0.13f);
+        List<Edge> expectedEdges = Arrays.asList(edge0, edge1);
+        session.save(edge0);
+        session.save(edge1);
 
         //Exercise SUT
-        List<Route> actualRoutes = routeDAO.retrieveAll();
+        List<Edge> actualEdges = edgeDAO.retrieveAll();
 
         //Verify Behaviour
-        assertThat(actualRoutes, sameBeanAs(expectedRoutes));
+        assertThat(actualEdges, sameBeanAs(expectedEdges));
 
     }
 
@@ -117,19 +117,19 @@ public class RoutedaoIT {
 
         //Set up fixture
         Session session = sessionFactory.getCurrentSession();
-        Route route0 = new Route(17, "A", "B", 0.17f);
-        Route route1 = new Route(19, "C", "D", 0.19f);
-        List<Route> expectedRoutes = Arrays.asList(route0);
-        session.save(route0);
-        session.save(route1);
+        Edge edge0 = new Edge(17, "A", "B", 0.17f);
+        Edge edge1 = new Edge(19, "C", "D", 0.19f);
+        List<Edge> expectedEdges = Arrays.asList(edge0);
+        session.save(edge0);
+        session.save(edge1);
 
         //Exercise SUT
-        routeDAO.delete(route1.getRouteId());
-        Criteria criteria = session.createCriteria(Route.class);
-        List<Route> actualRoutes = (List<Route>) criteria.list();
+        edgeDAO.delete(edge1.getEdgeId());
+        Criteria criteria = session.createCriteria(Edge.class);
+        List<Edge> actualEdges = (List<Edge>) criteria.list();
 
         //Verify Behaviour
-        assertThat(actualRoutes, sameBeanAs(expectedRoutes));
+        assertThat(actualEdges, sameBeanAs(expectedEdges));
 
     }
 }
