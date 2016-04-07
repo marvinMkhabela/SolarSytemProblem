@@ -4,22 +4,22 @@ import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Traffic;
 import za.co.discovery.assignment.Models.Vertex;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Graph {
 
-    private ArrayList<Vertex> vertices;
-    private ArrayList<Edge> edges;
+    private List<Vertex> vertices;
+    private List<Edge> edges;
 
     protected Graph() {
     }
 
-    public Graph(ArrayList<Vertex> vertices, ArrayList<Edge> edges) {
+    public Graph(List<Vertex> vertices, List<Edge> edges) {
         this.vertices = vertices;
         this.edges = edges;
     }
 
-    public void appendTrafficData(ArrayList<Traffic> traffic) {
+    public void appendTrafficData(List<Traffic> traffic) {
 
         float placeholder;
         for (Traffic t : traffic) {
@@ -32,19 +32,19 @@ public class Graph {
         }
     }
 
-    public ArrayList<Vertex> getVertices() {
+    public List<Vertex> getVertices() {
         return vertices;
     }
 
-    public void setVertices(ArrayList<Vertex> vertices) {
+    public void setVertices(List<Vertex> vertices) {
         this.vertices = vertices;
     }
 
-    public ArrayList<Edge> getEdges() {
+    public List<Edge> getEdges() {
         return edges;
     }
 
-    public void setEdges(ArrayList<Edge> edges) {
+    public void setEdges(List<Edge> edges) {
         this.edges = edges;
     }
 }

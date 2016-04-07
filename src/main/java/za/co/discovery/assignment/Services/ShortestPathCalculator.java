@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Vertex;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ShortestPathCalculator {
@@ -22,8 +22,8 @@ public class ShortestPathCalculator {
 
     public String[] calculatePathsFromEarth() {
 
-        ArrayList<Vertex> vertices = graph.getVertices();
-        ArrayList<Edge> edges = graph.getEdges();
+        List<Vertex> vertices = graph.getVertices();
+        List<Edge> edges = graph.getEdges();
         int n = vertices.size();
 
         float[] distances = new float[n];
@@ -99,7 +99,7 @@ public class ShortestPathCalculator {
 
         int idx = -1;
         Vertex vertex;
-        ArrayList<Vertex> vertices = graph.getVertices();
+        List<Vertex> vertices = graph.getVertices();
         for (int i = 0; i < vertices.size(); i++) {
             vertex = vertices.get(i);
             if (vertex.getNode().equals(node)) {

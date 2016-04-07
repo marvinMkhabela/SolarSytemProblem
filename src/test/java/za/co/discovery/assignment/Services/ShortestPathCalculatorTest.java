@@ -5,6 +5,7 @@ import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Vertex;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.shazam.shazamcrest.MatcherAssert.assertThat;
 import static com.shazam.shazamcrest.matcher.Matchers.sameBeanAs;
@@ -16,13 +17,13 @@ public class ShortestPathCalculatorTest {
     public void verifyThatAlgorithmComputesTheShortestPathsFromEarth() {
 
         // Set up fixture
-        ArrayList<Vertex> vertices = new ArrayList<Vertex>();
+        List<Vertex> vertices = new ArrayList<Vertex>();
         vertices.add(new Vertex("A", "Earth"));
         vertices.add(new Vertex("B", "Moon"));
         vertices.add(new Vertex("C", "Mars"));
         vertices.add(new Vertex("D", "Mercury"));
 
-        ArrayList<Edge> edges = new ArrayList<Edge>();
+        List<Edge> edges = new ArrayList<Edge>();
         edges.add(new Edge(1, "A", "B", 2f, 3f));
         edges.add(new Edge(2, "B", "C", 3f, 5f));
         edges.add(new Edge(3, "C", "D", 5f, 7f));
