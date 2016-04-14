@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete Traffic</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/deleteTraffic.js"></script>
+</head>
+
+<body>
+
+<div>
+    <button type="button" onclick="location.href='/menu'">Menu</button>
+</div>
+<br/>
+
+<select id="deleteTrafficDropDown" onchange="deleteTraffic()">
+    <option value="null">--SELECT--</option>
+    <tr th:each="e,iterationStatus  : ${traffic}">
+        <option th:value="${e.routeId}" th:text="${e.origin}+' --> '+${e.destination}+' = '+${e.trafficDelay}"></option>
+    </tr>
+</select>
+</body>
+
+</html>

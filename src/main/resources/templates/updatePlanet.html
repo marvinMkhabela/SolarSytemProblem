@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Update a planet</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/updatePlanet.js"></script>
+</head>
+
+<body>
+
+<div>
+    <button type="button" onclick="location.href='/menu'">Menu</button>
+</div>
+<br/>
+
+<div>
+    <p>Please select a planet node to update</p>
+    <select id="updateNodeDropDown" onchange="updateConfirmed()">
+        <option value="null">--SELECT--</option>
+        <tr th:each="e,iterationStatus  : ${vertices}">
+            <option th:value="${e.node}" th:text="${e.node}"></option>
+        </tr>
+    </select>
+</div>
+
+<div id="namingForm"></div>
+
+</body>
+
+</html>

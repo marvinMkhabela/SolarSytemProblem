@@ -1,6 +1,9 @@
 package za.co.discovery.assignment.Models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity(name = "traffic")
@@ -28,11 +31,11 @@ public class Traffic implements Serializable{
         this.trafficDelay = trafficDelay;
     }
 
-    public int getRoute() {
+    public int getRouteId() {
         return routeId;
     }
 
-    public void setRoute(int routeId) {
+    public void setRouteId(int routeId) {
         this.routeId = routeId;
     }
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete a Route</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/deleteRoute.js"></script>
+</head>
+
+<body>
+
+<div>
+    <button type="button" onclick="location.href='/menu'">Menu</button>
+</div>
+<br/>
+
+<div>
+    <p>Please select a Route to delete:</p>
+    <select id="deleteRouteDropDown" onchange="deleteRoute()">
+        <option value="null">--SELECT--</option>
+        <tr th:each="e,iterationStatus  : ${edges}">
+            <option th:value="${e.edgeId}" th:text="${e.origin}+' --> '+${e.destination}"></option>
+        </tr>
+    </select>
+</div>
+
+</body>
+
+</html>

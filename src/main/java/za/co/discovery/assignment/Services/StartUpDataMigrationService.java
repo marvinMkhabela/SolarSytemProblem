@@ -1,5 +1,6 @@
 package za.co.discovery.assignment.Services;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.discovery.assignment.DAO.EdgeDAO;
@@ -22,8 +23,11 @@ public class StartUpDataMigrationService {
     private EdgeDAO edgeDAO;
     private TrafficDAO trafficDAO;
 
+    public StartUpDataMigrationService() {
+    }
+
     @Autowired
-    public StartUpDataMigrationService(VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO) {
+    public StartUpDataMigrationService(SessionFactory sessionFactory, VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO) {
         this.vertexDAO = vertexDAO;
         this.edgeDAO = edgeDAO;
         this.trafficDAO = trafficDAO;

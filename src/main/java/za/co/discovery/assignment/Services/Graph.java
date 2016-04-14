@@ -24,7 +24,7 @@ public class Graph {
         float placeholder;
         for (Traffic t : traffic) {
             for (Edge e : edges) {
-                if (e.getEdgeId() == t.getRoute()) {
+                if (e.getEdgeId() == t.getRouteId()) {
                     placeholder = e.getDistance() + t.getTrafficDelay();
                     e.setTotalTravelTime(placeholder);
                 }

@@ -31,7 +31,8 @@ public class PersistenceConfig {
 
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(final SessionFactory sessionFactory) {
+    @Qualifier("transactionManager")
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(sessionFactory);
 

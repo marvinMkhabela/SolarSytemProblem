@@ -58,12 +58,15 @@ public class ShortestPathCalculator {
                     destinationIdx = findVertexIndexByNode(neighbours.getDestination());
                     alternateDistance = distances[minimumIdx] + neighbours.getTotalTravelTime();
 
-                    if (alternateDistance < distances[destinationIdx]) {
-                        alternatePath = new String(paths[minimumIdx]);
-                        alternatePath = alternatePath + "," + vertices.get(destinationIdx).getNode();
-                        paths[destinationIdx] = alternatePath;
-                        distances[destinationIdx] = alternateDistance;
+                    if (destinationIdx != -1) {
+                        if (alternateDistance < distances[destinationIdx]) {
+                            alternatePath = new String(paths[minimumIdx]);
+                            alternatePath = alternatePath + "," + vertices.get(destinationIdx).getNode();
+                            paths[destinationIdx] = alternatePath;
+                            distances[destinationIdx] = alternateDistance;
+                        }
                     }
+
                 }
             }
             minimumIdx = findMinimum(distances, availability);
@@ -80,6 +83,7 @@ public class ShortestPathCalculator {
         for (int i = 0; i < values.length; i++) {
             if ((values[i] <= minimum) && (availability[i])) {
                 minimumIdx = i;
+                minimum = values[i];
             }
         }
 

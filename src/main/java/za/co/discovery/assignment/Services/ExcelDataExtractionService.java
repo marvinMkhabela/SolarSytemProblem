@@ -123,7 +123,7 @@ public class ExcelDataExtractionService {
                 cellIterator = row.cellIterator();
 
                 cell = cellIterator.next();
-                traffic.setRoute((int) cell.getNumericCellValue());
+                traffic.setRouteId((int) cell.getNumericCellValue());
                 cell = cellIterator.next();
                 traffic.setOrigin(cell.getStringCellValue());
                 cell = cellIterator.next();

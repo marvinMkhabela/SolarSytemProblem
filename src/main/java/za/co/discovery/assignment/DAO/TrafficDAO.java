@@ -6,11 +6,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.discovery.assignment.Models.Traffic;
 
 import java.util.List;
 
+@Service
 @Transactional
 public class TrafficDAO {
 

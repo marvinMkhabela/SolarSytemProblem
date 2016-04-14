@@ -68,7 +68,7 @@ public class TrafficdaoIT {
         //Exercise SUT
         trafficDAO.update(correctTraffic);
         Criteria criteria = session.createCriteria(Traffic.class);
-        criteria.add(Restrictions.eq("routeId", correctTraffic.getRoute()));
+        criteria.add(Restrictions.eq("routeId", correctTraffic.getRouteId()));
         List<Traffic> actualTraffic = (List<Traffic>) criteria.list();
 
         //Verify Behaviour
@@ -86,7 +86,7 @@ public class TrafficdaoIT {
         session.save(expectedTraffic);
 
         //Exercise SUT
-        Traffic retrievedTraffic = trafficDAO.retrieve(expectedTraffic.getRoute());
+        Traffic retrievedTraffic = trafficDAO.retrieve(expectedTraffic.getRouteId());
 
         //Verify Behaviour
         assertThat(retrievedTraffic, sameBeanAs(expectedTraffic));
@@ -123,7 +123,7 @@ public class TrafficdaoIT {
         session.save(traffic1);
 
         //Exercise SUT
-        trafficDAO.delete(traffic1.getRoute());
+        trafficDAO.delete(traffic1.getRouteId());
         Criteria criteria = session.createCriteria(Traffic.class);
         List<Traffic> actualTraffic = (List<Traffic>) criteria.list();
 
