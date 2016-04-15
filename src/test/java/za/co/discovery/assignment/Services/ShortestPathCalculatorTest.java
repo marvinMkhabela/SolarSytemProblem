@@ -51,7 +51,7 @@ public class ShortestPathCalculatorTest {
         ShortestPathCalculator shortestPathCalculator = new ShortestPathCalculator();
         float[] values = {999f, 1002f, 1001f, 1000f};
         boolean[] booleans = {true, true, true, true};
-        int expectedResult = 3;
+        int expectedResult = 0;
 
         // Exercise SUT
         int actualResult = shortestPathCalculator.findMinimum(values, booleans);

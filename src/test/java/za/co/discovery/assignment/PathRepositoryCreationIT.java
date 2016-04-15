@@ -31,7 +31,7 @@ import static org.mockito.Mockito.mock;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DataSourceConfig.class, PersistenceConfig.class},
         loader = AnnotationConfigContextLoader.class)
-public class PathRepositoryCreationTest {
+public class PathRepositoryCreationIT {
 
     @Autowired
     private SessionFactory sessionFactory;

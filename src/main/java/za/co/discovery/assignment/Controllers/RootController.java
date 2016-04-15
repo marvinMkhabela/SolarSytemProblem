@@ -29,23 +29,23 @@ import java.util.List;
 public class RootController {
 
     private SessionFactory sessionFactory;
-    List<PathDTO> paths = new ArrayList<PathDTO>();
-    List<Vertex> vertices;
-    List<Edge> edges;
-    List<Traffic> traffic;
+    protected List<PathDTO> paths = new ArrayList<PathDTO>();
+    protected List<Vertex> vertices;
+    protected List<Edge> edges;
+    protected List<Traffic> traffic;
     private VertexDAO vertexDAO;
     private EdgeDAO edgeDAO;
     private TrafficDAO trafficDAO;
     private StartUpDataMigrationService startUpDataMigrationService;
 
     @Autowired
-    public RootController(SessionFactory sessionFactory, VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO) {
+    public RootController(SessionFactory sessionFactory, VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO, StartUpDataMigrationService startUpDataMigrationService) {
 
         this.sessionFactory = sessionFactory;
         this.vertexDAO = vertexDAO;
         this.edgeDAO = edgeDAO;
         this.trafficDAO = trafficDAO;
-        startUpDataMigrationService = new StartUpDataMigrationService(sessionFactory, vertexDAO, edgeDAO, trafficDAO);
+        this.startUpDataMigrationService = startUpDataMigrationService;
     }
 
     @RequestMapping("/")
@@ -113,7 +113,7 @@ public class RootController {
     }
 
     @RequestMapping("/update")
-    public String updateNode(Model model) {
+    public String updatePlanet(Model model) {
 
         model.addAttribute("vertices", vertices);
         return "updatePlanet";
@@ -157,7 +157,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/createPlanet", method = RequestMethod.GET)
-    public ResponseEntity EvaluateEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
+    public ResponseEntity EvaluatePlanetEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
                                         @RequestParam(value = "creationName", required = true) String creationName) {
 
         String clashes = "No";
@@ -172,7 +172,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/persistEntry")
-    public String storeEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
+    public String storePlanetEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
                              @RequestParam(value = "creationName", required = true) String creationName) {
 
         vertexDAO.save(new Vertex(creationNode, creationName));
