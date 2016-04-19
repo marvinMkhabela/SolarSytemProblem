@@ -17,6 +17,7 @@ import za.co.discovery.assignment.Configuration.PersistenceConfig;
 import za.co.discovery.assignment.Models.Edge;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.shazam.shazamcrest.MatcherAssert.assertThat;
@@ -45,7 +46,7 @@ public class EdgedaoIT {
         //Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
         Edge edge = new Edge(2, "A", "B", 0.2f);
-        List<Edge> expectedEdges = Arrays.asList(edge);
+        List<Edge> expectedEdges = Collections.singletonList(edge);
 
         //Exercise SUT
         edgeDAO.save(edge);
@@ -63,7 +64,7 @@ public class EdgedaoIT {
         Session session = sessionFactory.getCurrentSession();
         Edge edge = new Edge(3, "A", "B", 0.3f);
         Edge correctEdge = new Edge(3, "C", "D", 3f);
-        List<Edge> expectedEdges = Arrays.asList(correctEdge);
+        List<Edge> expectedEdges = Collections.singletonList(correctEdge);
         session.save(edge);
 
         // Exercise SUT
@@ -119,7 +120,7 @@ public class EdgedaoIT {
         Session session = sessionFactory.getCurrentSession();
         Edge edge0 = new Edge(17, "A", "B", 0.17f);
         Edge edge1 = new Edge(19, "C", "D", 0.19f);
-        List<Edge> expectedEdges = Arrays.asList(edge0);
+        List<Edge> expectedEdges = Collections.singletonList(edge0);
         session.save(edge0);
         session.save(edge1);
 

@@ -18,6 +18,7 @@ import za.co.discovery.assignment.Configuration.PersistenceConfig;
 import za.co.discovery.assignment.Models.Traffic;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.shazam.shazamcrest.MatcherAssert.assertThat;
@@ -44,7 +45,7 @@ public class TrafficdaoIT {
         //Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
         Traffic traffic = new Traffic(2, "A", "B", 2f);
-        List<Traffic> expectedTraffic = Arrays.asList(traffic);
+        List<Traffic> expectedTraffic = Collections.singletonList(traffic);
 
         //Exercise SUT
         trafficDAO.save(traffic);
@@ -62,7 +63,7 @@ public class TrafficdaoIT {
         Session session = sessionFactory.getCurrentSession();
         Traffic traffic = new Traffic(3, "A", "B", 3f);
         Traffic correctTraffic = new Traffic(3, "C", "D", 0.3f);
-        List<Traffic> expectedTraffic = Arrays.asList(correctTraffic);
+        List<Traffic> expectedTraffic = Collections.singletonList(correctTraffic);
         session.save(traffic);
 
         //Exercise SUT
@@ -118,7 +119,7 @@ public class TrafficdaoIT {
         Session session = sessionFactory.getCurrentSession();
         Traffic traffic0 = new Traffic(17, "A", "B", 17f);
         Traffic traffic1 = new Traffic(19, "C", "D", 19f);
-        List<Traffic> expectedTraffic = Arrays.asList(traffic0);
+        List<Traffic> expectedTraffic = Collections.singletonList(traffic0);
         session.save(traffic0);
         session.save(traffic1);
 

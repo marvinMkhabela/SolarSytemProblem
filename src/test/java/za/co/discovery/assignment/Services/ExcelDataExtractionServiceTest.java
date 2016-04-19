@@ -9,6 +9,7 @@ import za.co.discovery.assignment.Models.Vertex;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.shazam.shazamcrest.MatcherAssert.assertThat;
 import static com.shazam.shazamcrest.matcher.Matchers.sameBeanAs;
@@ -36,7 +37,7 @@ public class ExcelDataExtractionServiceTest {
 
         //Exercise SUT
         try {
-            ArrayList<Vertex> actualVertexes = excelDataExtractionService.readSheet1();
+            List<Vertex> actualVertexes = excelDataExtractionService.readSheet1();
 
             //Verify Behaviour
             assertThat(expectedVertexes, sameBeanAs(actualVertexes));
@@ -59,7 +60,7 @@ public class ExcelDataExtractionServiceTest {
 
         //Exercise SUT
         try {
-            ArrayList<Edge> actualEdges = excelDataExtractionService.readSheet2();
+            List<Edge> actualEdges = excelDataExtractionService.readSheet2();
 
             //Verify Behaviour
             assertThat(expectedEdges, sameBeanAs(actualEdges));
@@ -81,7 +82,7 @@ public class ExcelDataExtractionServiceTest {
 
         //Exercise SUT
         try {
-            ArrayList<Traffic> actualTraffic = excelDataExtractionService.readSheet3();
+            List<Traffic> actualTraffic = excelDataExtractionService.readSheet3();
 
             //Verify Behaviour
             assertThat(expectedTraffic, sameBeanAs(actualTraffic));

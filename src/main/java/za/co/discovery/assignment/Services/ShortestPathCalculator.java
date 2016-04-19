@@ -32,7 +32,7 @@ public class ShortestPathCalculator {
         for (int i = 0; i < n; i++) {
             distances[i] = (float) Integer.MAX_VALUE;
             availability[i] = true;
-            paths[i] = new String("A");
+            paths[i] = "A";
         }
 
         int minimumIdx = 0;
@@ -40,7 +40,6 @@ public class ShortestPathCalculator {
         availability[minimumIdx] = false;
 
         Vertex targetVertex;
-        Edge neighbours;
         int destinationIdx;
         String alternatePath;
         float alternateDistance;
@@ -51,12 +50,11 @@ public class ShortestPathCalculator {
             targetVertex = vertices.get(minimumIdx);
             availability[minimumIdx] = false;
 
-            for (int i = 0; i < edges.size(); i++) {
-                neighbours = edges.get(i);
+            for (Edge neighbour : edges) {
 
-                if (neighbours.getOrigin().equals(targetVertex.getNode())) {
-                    destinationIdx = findVertexIndexByNode(neighbours.getDestination());
-                    alternateDistance = distances[minimumIdx] + neighbours.getTotalTravelTime();
+                if (neighbour.getOrigin().equals(targetVertex.getNode())) {
+                    destinationIdx = findVertexIndexByNode(neighbour.getDestination());
+                    alternateDistance = distances[minimumIdx] + neighbour.getTotalTravelTime();
 
                     if (destinationIdx != -1) {
                         if (alternateDistance < distances[destinationIdx]) {
@@ -93,8 +91,8 @@ public class ShortestPathCalculator {
     public boolean arrayOr(boolean[] booleans) {
 
         boolean res = false;
-        for (int i = 0; i < booleans.length; i++) {
-            res = (res || booleans[i]);
+        for (boolean bool : booleans) {
+            res = (res || bool);
         }
         return res;
     }

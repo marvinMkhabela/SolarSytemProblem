@@ -1,6 +1,5 @@
 package za.co.discovery.assignment;
 
-import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,9 +8,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
-import za.co.discovery.assignment.DAO.EdgeDAO;
 import za.co.discovery.assignment.DAO.TrafficDAO;
-import za.co.discovery.assignment.DAO.VertexDAO;
 import za.co.discovery.assignment.DTO.PathDTO;
 import za.co.discovery.assignment.Models.Traffic;
 import za.co.discovery.assignment.Models.Vertex;
@@ -28,20 +25,14 @@ import java.util.List;
 public class PathRepositoryCreation {
 
     private List<PathDTO> paths = new ArrayList<PathDTO>();
-    private SessionFactory sessionFactory;
     protected PlatformTransactionManager txManager;
-    private VertexDAO vertexDAO;
-    private EdgeDAO edgeDAO;
     private TrafficDAO trafficDAO;
     private StartUpDataMigrationService startUpDataMigrationService;
 
     @Autowired
-    public PathRepositoryCreation(SessionFactory sessionFactory, @Qualifier("transactionManager") PlatformTransactionManager txManager, VertexDAO vertexDAO,
-                                  EdgeDAO edgeDAO, TrafficDAO trafficDAO, StartUpDataMigrationService startUpDataMigrationService) {
-        this.sessionFactory = sessionFactory;
+    public PathRepositoryCreation(@Qualifier("transactionManager") PlatformTransactionManager txManager,
+                                  TrafficDAO trafficDAO, StartUpDataMigrationService startUpDataMigrationService) {
         this.txManager = txManager;
-        this.edgeDAO = edgeDAO;
-        this.vertexDAO = vertexDAO;
         this.trafficDAO = trafficDAO;
         this.startUpDataMigrationService = startUpDataMigrationService;
     }

@@ -1,6 +1,5 @@
 package za.co.discovery.assignment.Services;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.discovery.assignment.DAO.EdgeDAO;
@@ -12,22 +11,17 @@ import za.co.discovery.assignment.Models.Vertex;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class StartUpDataMigrationService {
 
-    private ExcelDataExtractionService excelDataExtractionService;
     private VertexDAO vertexDAO;
     private EdgeDAO edgeDAO;
     private TrafficDAO trafficDAO;
 
-    public StartUpDataMigrationService() {
-    }
-
     @Autowired
-    public StartUpDataMigrationService(SessionFactory sessionFactory, VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO) {
+    public StartUpDataMigrationService(VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO) {
         this.vertexDAO = vertexDAO;
         this.edgeDAO = edgeDAO;
         this.trafficDAO = trafficDAO;
@@ -35,18 +29,18 @@ public class StartUpDataMigrationService {
 
     public void readXLSXFile() {
         ClassLoader classLoader = getClass().getClassLoader();
-        excelDataExtractionService = new ExcelDataExtractionService(new File(classLoader.getResource("worksheet.xlsx").getFile()));
+        ExcelDataExtractionService excelDataExtractionService = new ExcelDataExtractionService(new File(classLoader.getResource("worksheet.xlsx").getFile()));
 
         try {
-            ArrayList<Vertex> vertices = excelDataExtractionService.readSheet1();
+            List<Vertex> vertices = excelDataExtractionService.readSheet1();
             for (Vertex v : vertices) {
                 vertexDAO.save(v);
             }
-            ArrayList<Edge> edges = excelDataExtractionService.readSheet2();
+            List<Edge> edges = excelDataExtractionService.readSheet2();
             for (Edge e : edges) {
                 edgeDAO.save(e);
             }
-            ArrayList<Traffic> traffic = excelDataExtractionService.readSheet3();
+            List<Traffic> traffic = excelDataExtractionService.readSheet3();
             for (Traffic t : traffic) {
                 trafficDAO.save(t);
             }

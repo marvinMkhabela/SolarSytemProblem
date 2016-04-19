@@ -1,6 +1,5 @@
 package za.co.discovery.assignment.Controllers;
 
-import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -32,7 +31,6 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 public class RootControllerTest {
 
     private MockMvc mockMvc;
-    private SessionFactory sessionFactory = Mockito.mock(SessionFactory.class);
     private VertexDAO vertexDAO = Mockito.mock(VertexDAO.class);
     private EdgeDAO edgeDAO = Mockito.mock(EdgeDAO.class);
     private TrafficDAO trafficDAO = Mockito.mock(TrafficDAO.class);

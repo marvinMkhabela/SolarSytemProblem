@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class ExcelDataExtractionService {
@@ -28,9 +29,9 @@ public class ExcelDataExtractionService {
         this.file = file;
     }
 
-    public ArrayList<Vertex> readSheet1() throws IOException {
+    public List<Vertex> readSheet1() throws IOException {
 
-        ArrayList objectList = new ArrayList<Vertex>();
+        List<Vertex> objectList = new ArrayList<Vertex>();
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
@@ -63,9 +64,9 @@ public class ExcelDataExtractionService {
 
     }
 
-    public ArrayList<Edge> readSheet2() throws IOException {
+    public List<Edge> readSheet2() throws IOException {
 
-        ArrayList objectList = new ArrayList<Edge>();
+        List<Edge> objectList = new ArrayList<Edge>();
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);
@@ -102,9 +103,9 @@ public class ExcelDataExtractionService {
 
     }
 
-    public ArrayList<Traffic> readSheet3() throws IOException {
+    public List<Traffic> readSheet3() throws IOException {
 
-        ArrayList objectList = new ArrayList<Traffic>();
+        List<Traffic> objectList = new ArrayList<Traffic>();
         try {
             FileInputStream fis = new FileInputStream(file);
             XSSFWorkbook workbook = new XSSFWorkbook(fis);

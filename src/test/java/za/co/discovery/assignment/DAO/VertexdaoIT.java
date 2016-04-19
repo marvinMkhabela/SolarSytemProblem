@@ -17,6 +17,7 @@ import za.co.discovery.assignment.Configuration.PersistenceConfig;
 import za.co.discovery.assignment.Models.Vertex;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.shazam.shazamcrest.MatcherAssert.assertThat;
@@ -44,7 +45,7 @@ public class VertexdaoIT {
         //Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
         Vertex vertex = new Vertex("J", "Jupiter");
-        List<Vertex> expectedVertexes = Arrays.asList(vertex);
+        List<Vertex> expectedVertexes = Collections.singletonList(vertex);
 
         //Exercise SUT
         vertexDAO.save(vertex);
@@ -62,7 +63,7 @@ public class VertexdaoIT {
         Session session = sessionFactory.getCurrentSession();
         Vertex vertex = new Vertex("M", "Mercury");
         Vertex correctVertex = new Vertex("M", "Mars");
-        List<Vertex> expectedVertexes = Arrays.asList(correctVertex);
+        List<Vertex> expectedVertexes = Collections.singletonList(correctVertex);
         session.save(vertex);
 
         // Exercise SUT
@@ -118,7 +119,7 @@ public class VertexdaoIT {
         Session session = sessionFactory.getCurrentSession();
         Vertex vertex0 = new Vertex("E", "Earth");
         Vertex vertex1 = new Vertex("A", "Asgard");
-        List<Vertex> expectedVertexes = Arrays.asList(vertex0);
+        List<Vertex> expectedVertexes = Collections.singletonList(vertex0);
         session.save(vertex0);
         session.save(vertex1);
 
