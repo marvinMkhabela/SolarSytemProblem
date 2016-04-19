@@ -5,38 +5,56 @@
     <title>Create Traffic</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/mystyle.css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/js/createTraffic.js"></script>
 </head>
 
 <body>
 
-<div>
-    <button type="button" onclick="location.href='/menu'">Menu</button>
-</div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/menu">Discovery Galaxy</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/menu">Menu</a></li>
+        </ul>
+    </div>
+</nav>
 <br/>
 
 <div id="errorMessages">
 
 </div>
 
-<div>
-    <form>
-        <select id="trafficOriginDropDown" onchange="deleteTraffic()">
-            <option value="null">--ORIGIN--</option>
+<div class="dropdown">
+    <select class="selectpicker" id="trafficOriginDropDown" onchange="deleteTraffic()">
+        <option value="null">--SELECT--</option>
             <tr th:each="e,iterationStatus  : ${vertices}">
                 <option th:value="${e.node}" th:text="${e.name}"></option>
             </tr>
         </select>
+</div>
 
-        <select id="trafficDestinationDropDown" onchange="deleteTraffic()">
-            <option value="null">--DESTINATION--</option>
-            <tr th:each="e,iterationStatus  : ${vertices}">
-                <option th:value="${e.node}" th:text="${e.name}"></option>
-            </tr>
-        </select>
-        Traffic Delay: <input id="delay" type="text"/>
-    </form>
-    <button type="button" onclick="createTraffic()">Submit</button>
+<div class="dropdown">
+    <select class="selectpicker" id="trafficDestinationDropDown" onchange="deleteTraffic()">
+        <option value="null">--SELECT DESTINATION--</option>
+        <tr th:each="e,iterationStatus  : ${vertices}">
+            <option th:value="${e.node}" th:text="${e.name}"></option>
+        </tr>
+    </select>
+</div>
+
+<form role="form">
+    <div class="form-group">
+        <label for="delay">Traffic Delay:</label>
+        <input id="delay" type="text" class="form-control"/>
+    </div>
+</form>
+
+<div class="container">
+    <button class="btn btn-success" type="button" onclick="createTraffic()">Submit</button>
 </div>
 
 </body>

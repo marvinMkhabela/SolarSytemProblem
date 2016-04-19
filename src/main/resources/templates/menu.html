@@ -2,37 +2,63 @@
 <html>
 
 <head>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
 </head>
 
 <body>
 
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/menu">Discovery Galaxy</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/menu">Menu</a></li>
+        </ul>
+    </div>
+</nav>
+<br/>
+
 <div>
     <h3>Hi there, What do you wish to do?</h3>
 
-    <div>
-        <button type="button" onclick="location.href='/query'">Query Paths</button>
+    <div class="container">
+        <button class="btn btn-info" type="button" onclick="location.href='/query'">Query Paths</button>
     </div>
     <br/>
 
-    <div>
-        <button type="button" onclick="location.href='/update'">Update Planet</button>
-        <button type="button" onclick="location.href='/create'">Add Planet</button>
-        <button type="button" onclick="location.href='/delete'">Delete Planet</button>
+    <div class="container">
+        <button class="btn btn-warning" type="button" onclick="location.href='/update'">Update Planet</button>
+    </div>
+    <div class="container">
+        <button class="btn btn-success" type="button" onclick="location.href='/create'">Add Planet</button>
+    </div>
+    <div class="container">
+        <button class="btn btn-danger" type="button" onclick="location.href='/delete'">Delete Planet</button>
     </div>
     <br/>
 
-    <div>
-        <button type="button" onclick="location.href='/updateRoute'">update Route</button>
-        <button type="button" onclick="location.href='/createRoute'">Add Route</button>
-        <button type="button" onclick="location.href='/deleteRoute'">Delete Route</button>
+    <div class="container">
+        <button class="btn btn-warning" type="button" onclick="location.href='/updateRoute'">update Route</button>
+    </div>
+    <div class="container">
+        <button class="btn btn-success" type="button" onclick="location.href='/createRoute'">Add Route</button>
+    </div>
+    <div class="container">
+        <button class="btn btn-danger" type="button" onclick="location.href='/deleteRoute'">Delete Route</button>
     </div>
     <br/>
 
-    <div>
-        <button type="button" onclick="location.href='/updateTraffic'">update Traffic</button>
-        <button type="button" onclick="location.href='/createTraffic'">Add Traffic</button>
-        <button type="button" onclick="location.href='/deleteTraffic'">Delete Traffic</button>
+    <div class="container">
+        <button class="btn btn-warning" type="button" onclick="location.href='/updateTraffic'">update Traffic</button>
+    </div>
+    <div class="container">
+        <button class="btn btn-success" type="button" onclick="location.href='/createTraffic'">Add Traffic</button>
+    </div>
+    <div class="container">
+        <button class="btn btn-danger" type="button" onclick="location.href='/deleteTraffic'">Delete Traffic</button>
     </div>
 
 </div>

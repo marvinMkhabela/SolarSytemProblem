@@ -5,14 +5,23 @@
     <title>Update Route</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/mystyle.css"/>
     <script type="text/javascript" src="/js/updateRoute.js"></script>
 </head>
 
 <body>
 
-<div>
-    <button type="button" onclick="location.href='/menu'">Menu</button>
-</div>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/menu">Discovery Galaxy</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/menu">Menu</a></li>
+        </ul>
+    </div>
+</nav>
 <br/>
 
 <div id="errorMessages">
@@ -20,8 +29,8 @@
 </div>
 
 <div>
-    <p>Please select a Route to update</p>
-    <select id="updateRouteDropDown" onchange="updateRoute()">
+    <p>Please select a route to update</p>
+    <select class="selectpicker" id="updateRouteDropDown" onchange="updateRoute()">
         <option value="null">--SELECT--</option>
         <tr th:each="e,iterationStatus  : ${edges}">
             <option th:value="${e.edgeId}" th:text="${e.origin}+' --> '+${e.destination}+' = '+${e.distance}"></option>

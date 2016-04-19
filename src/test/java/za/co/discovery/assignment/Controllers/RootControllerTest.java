@@ -64,7 +64,7 @@ public class RootControllerTest {
         Mockito.when(startUpDataMigrationService.retrieveAllEdges()).thenReturn(edges);
         Mockito.when(startUpDataMigrationService.retrieveAllTraffic()).thenReturn(traffic);
 
-        rootController = new RootController(sessionFactory, vertexDAO, edgeDAO, trafficDAO, startUpDataMigrationService);
+        rootController = new RootController(vertexDAO, edgeDAO, trafficDAO, startUpDataMigrationService);
 
         PathDTO path0 = new PathDTO();
         path0.setName("Earth");
@@ -500,7 +500,7 @@ public class RootControllerTest {
         Mockito.when(startUpDataMigrationService.retrieveAllEdges()).thenReturn(edges);
         Mockito.when(startUpDataMigrationService.retrieveAllTraffic()).thenReturn(traffic);
 
-        rootController = new RootController(sessionFactory, vertexDAO, edgeDAO, trafficDAO, startUpDataMigrationService);
+        rootController = new RootController(vertexDAO, edgeDAO, trafficDAO, startUpDataMigrationService);
         rootController.home();
 
         mockMvc = standaloneSetup(rootController)

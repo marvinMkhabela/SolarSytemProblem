@@ -21,7 +21,7 @@ import za.co.discovery.assignment.Services.StartUpDataMigrationService;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -30,14 +30,20 @@ public class PathRepositoryCreation {
     private List<PathDTO> paths = new ArrayList<PathDTO>();
     private SessionFactory sessionFactory;
     protected PlatformTransactionManager txManager;
+    private VertexDAO vertexDAO;
+    private EdgeDAO edgeDAO;
+    private TrafficDAO trafficDAO;
+    private StartUpDataMigrationService startUpDataMigrationService;
 
     @Autowired
-    public PathRepositoryCreation(SessionFactory sessionFactory, @Qualifier("transactionManager") PlatformTransactionManager txManager) {
+    public PathRepositoryCreation(SessionFactory sessionFactory, @Qualifier("transactionManager") PlatformTransactionManager txManager, VertexDAO vertexDAO,
+                                  EdgeDAO edgeDAO, TrafficDAO trafficDAO, StartUpDataMigrationService startUpDataMigrationService) {
         this.sessionFactory = sessionFactory;
         this.txManager = txManager;
-    }
-
-    public PathRepositoryCreation() {
+        this.edgeDAO = edgeDAO;
+        this.vertexDAO = vertexDAO;
+        this.trafficDAO = trafficDAO;
+        this.startUpDataMigrationService = startUpDataMigrationService;
     }
 
     @PostConstruct
@@ -47,11 +53,7 @@ public class PathRepositoryCreation {
         tmpl.execute(new TransactionCallbackWithoutResult() {
             @Override
             protected void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
-                VertexDAO vertexDAO = new VertexDAO(sessionFactory);
-                EdgeDAO edgeDAO = new EdgeDAO(sessionFactory);
-                TrafficDAO trafficDAO = new TrafficDAO(sessionFactory);
 
-                StartUpDataMigrationService startUpDataMigrationService = new StartUpDataMigrationService(sessionFactory, vertexDAO, edgeDAO, trafficDAO);
                 startUpDataMigrationService.readXLSXFile();
                 Graph graph = startUpDataMigrationService.createGraph();
                 List<Vertex> vertices = startUpDataMigrationService.retrieveAllVertices();
@@ -79,7 +81,7 @@ public class PathRepositoryCreation {
         }
 
         if (result == null) {
-            result = new PathDTO("Http 404", Arrays.asList(new Vertex("404", "Not Found")));
+            result = new PathDTO("Http 404", Collections.singletonList(new Vertex("404", "Not Found")));
         }
 
         Pathdto res = new Pathdto();

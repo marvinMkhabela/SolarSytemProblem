@@ -1,7 +1,6 @@
 package za.co.discovery.assignment.Controllers;
 
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +27,6 @@ import java.util.List;
 @Controller
 public class RootController {
 
-    private SessionFactory sessionFactory;
     protected List<PathDTO> paths = new ArrayList<PathDTO>();
     protected List<Vertex> vertices;
     protected List<Edge> edges;
@@ -39,9 +37,8 @@ public class RootController {
     private StartUpDataMigrationService startUpDataMigrationService;
 
     @Autowired
-    public RootController(SessionFactory sessionFactory, VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO, StartUpDataMigrationService startUpDataMigrationService) {
+    public RootController(VertexDAO vertexDAO, EdgeDAO edgeDAO, TrafficDAO trafficDAO, StartUpDataMigrationService startUpDataMigrationService) {
 
-        this.sessionFactory = sessionFactory;
         this.vertexDAO = vertexDAO;
         this.edgeDAO = edgeDAO;
         this.trafficDAO = trafficDAO;
@@ -122,7 +119,7 @@ public class RootController {
     @RequestMapping(value = "/updateNode", method = RequestMethod.GET)
     public ResponseEntity updateNode(@RequestParam(value = "updateNode", required = true) String updateNode) {
 
-        String responseString = new String();
+        String responseString = " ";
         for (Vertex v : vertices) {
             if (v.getNode().equals(updateNode)) {
                 responseString = v.getName();
@@ -137,7 +134,7 @@ public class RootController {
     public String persistUpdate(@RequestParam(value = "updatedName", required = true) String updatedName,
                                 @RequestParam(value = "updateNode", required = true) String updateNode) {
 
-        Vertex targetVertex = null;
+        Vertex targetVertex = new Vertex("Empty Node", "Empty Name");
         for (Vertex v : vertices) {
             if (v.getNode().equals(updateNode)) {
                 targetVertex = v;
@@ -158,7 +155,7 @@ public class RootController {
 
     @RequestMapping(value = "/createPlanet", method = RequestMethod.GET)
     public ResponseEntity EvaluatePlanetEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
-                                        @RequestParam(value = "creationName", required = true) String creationName) {
+                                              @RequestParam(value = "creationName", required = true) String creationName) {
 
         String clashes = "No";
         Vertex comparisonVertex = new Vertex(creationNode, creationName);
@@ -173,7 +170,7 @@ public class RootController {
 
     @RequestMapping(value = "/persistEntry")
     public String storePlanetEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
-                             @RequestParam(value = "creationName", required = true) String creationName) {
+                                   @RequestParam(value = "creationName", required = true) String creationName) {
 
         vertexDAO.save(new Vertex(creationNode, creationName));
 
@@ -190,7 +187,7 @@ public class RootController {
     @RequestMapping(value = "/deletePlanet", method = RequestMethod.GET)
     public String confirmedDelete(@RequestParam(value = "planetName", required = true) String planetName) {
 
-        Vertex vertex = null;
+        Vertex vertex = new Vertex("Empty Node", "Empty Vertex");
         for (Vertex v : vertices) {
             if (v.getName().equals(planetName)) {
                 vertex = v;

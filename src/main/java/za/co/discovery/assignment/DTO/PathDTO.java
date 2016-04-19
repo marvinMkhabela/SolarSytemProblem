@@ -22,7 +22,7 @@ public class PathDTO {
 
         String[] tempPath = rawPath.split(",");
         String[] pathAttributes = new String[2];
-        String namedPath = new String("Travel from ");
+        String namedPath = "Travel from ";
         int n = tempPath.length;
         String name = findVertexNameByNode(tempPath[n - 1], vertices);
         pathAttributes[0] = name;
@@ -41,7 +41,7 @@ public class PathDTO {
 
     public String findVertexNameByNode(String node, List<Vertex> vertices) {
 
-        String targetVertex = new String();
+        String targetVertex = " ";
         for (Vertex v : vertices) {
             if (v.getNode().equals(node)) {
                 targetVertex = v.getName();

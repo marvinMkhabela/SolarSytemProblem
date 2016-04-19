@@ -13,7 +13,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.discovery.assignment.Configuration.DataSourceConfig;
 import za.co.discovery.assignment.Configuration.PersistenceConfig;
+import za.co.discovery.assignment.DAO.EdgeDAO;
 import za.co.discovery.assignment.DAO.TrafficDAO;
+import za.co.discovery.assignment.DAO.VertexDAO;
 import za.co.discovery.assignment.Models.Edge;
 import za.co.discovery.assignment.Models.Traffic;
 import za.co.discovery.assignment.Models.Vertex;
@@ -31,7 +33,7 @@ import static org.mockito.Mockito.mock;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DataSourceConfig.class, PersistenceConfig.class},
         loader = AnnotationConfigContextLoader.class)
-public class PathRepositoryCreationIT {
+public class PathRepositoryCreationTest {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -44,6 +46,8 @@ public class PathRepositoryCreationIT {
 
         // SetUp Fixture
         TrafficDAO trafficDAO = mock(TrafficDAO.class);
+        VertexDAO vertexDAO = mock(VertexDAO.class);
+        EdgeDAO edgeDAO = mock(EdgeDAO.class);
         StartUpDataMigrationService startUpDataMigrationService = mock(StartUpDataMigrationService.class);
 
         Vertex vertex0 = new Vertex("A", "Earth");
@@ -61,7 +65,7 @@ public class PathRepositoryCreationIT {
         Mockito.when(startUpDataMigrationService.createGraph()).thenReturn(graph);
         Mockito.when(startUpDataMigrationService.retrieveAllVertices()).thenReturn(vertices);
         Mockito.when(trafficDAO.retrieveAll()).thenReturn(traffic);
-        PathRepositoryCreation pathRepositoryCreation = new PathRepositoryCreation(sessionFactory, txManager);
+        PathRepositoryCreation pathRepositoryCreation = new PathRepositoryCreation(sessionFactory, txManager, vertexDAO, edgeDAO, trafficDAO, startUpDataMigrationService);
 
         // Exercise SUT
         pathRepositoryCreation.initData();
