@@ -10,14 +10,12 @@ import java.util.List;
 public class ShortestPathCalculator {
 
     private Graph graph;
-    private String[] paths;
 
     protected ShortestPathCalculator() {
     }
 
     public ShortestPathCalculator(Graph graph) {
         this.graph = graph;
-        paths = new String[graph.getVertices().size()];
     }
 
     public String[] calculatePathsFromEarth() {
@@ -25,12 +23,13 @@ public class ShortestPathCalculator {
         List<Vertex> vertices = graph.getVertices();
         List<Edge> edges = graph.getEdges();
         int n = vertices.size();
+        String[] paths = new String[n];
 
         float[] distances = new float[n];
         boolean[] availability = new boolean[n];
 
         for (int i = 0; i < n; i++) {
-            distances[i] = (float) Integer.MAX_VALUE;
+            distances[i] = Float.MAX_VALUE;
             availability[i] = true;
             paths[i] = "A";
         }

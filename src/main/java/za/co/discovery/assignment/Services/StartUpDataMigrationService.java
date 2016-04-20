@@ -45,7 +45,7 @@ public class StartUpDataMigrationService {
                 trafficDAO.save(t);
             }
         } catch (IOException e) {
-            System.out.println("Caught IO Exception");
+            System.out.println("Caught IOException");
         }
     }
 

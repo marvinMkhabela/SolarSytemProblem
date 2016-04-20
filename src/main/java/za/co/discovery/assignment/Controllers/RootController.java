@@ -57,6 +57,10 @@ public class RootController {
         ShortestPathCalculator shortestPathCalculator = new ShortestPathCalculator(graph);
         String[] rawPaths = shortestPathCalculator.calculatePathsFromEarth();
 
+        if (!paths.isEmpty()) {
+            paths.clear();
+        }
+
         for (String s : rawPaths) {
             paths.add(new PathDTO(s, vertices));
         }
@@ -117,7 +121,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/updateNode", method = RequestMethod.GET)
-    public ResponseEntity updateNode(@RequestParam(value = "updateNode", required = true) String updateNode) {
+    public ResponseEntity<String> updateNode(@RequestParam(value = "updateNode", required = true) String updateNode) {
 
         String responseString = " ";
         for (Vertex v : vertices) {
@@ -126,7 +130,7 @@ public class RootController {
             }
         }
 
-        return new ResponseEntity(responseString, HttpStatus.OK);
+        return new ResponseEntity<String>(responseString, HttpStatus.OK);
 
     }
 
@@ -154,7 +158,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/createPlanet", method = RequestMethod.GET)
-    public ResponseEntity EvaluatePlanetEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
+    public ResponseEntity<String> EvaluatePlanetEntry(@RequestParam(value = "creationNode", required = true) String creationNode,
                                               @RequestParam(value = "creationName", required = true) String creationName) {
 
         String clashes = "No";
@@ -165,7 +169,7 @@ public class RootController {
             }
         }
 
-        return new ResponseEntity(clashes, HttpStatus.OK);
+        return new ResponseEntity<String>(clashes, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/persistEntry")
@@ -242,7 +246,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/proposeRouteCreation", method = RequestMethod.GET)
-    public ResponseEntity proposeRouteCreation(@RequestParam(value = "origin", required = true) String origin,
+    public ResponseEntity<String> proposeRouteCreation(@RequestParam(value = "origin", required = true) String origin,
                                                @RequestParam(value = "destination", required = true) String destination) {
 
         String exists = "No";
@@ -251,7 +255,7 @@ public class RootController {
                 exists = "Yes";
             }
         }
-        return new ResponseEntity(exists, HttpStatus.OK);
+        return new ResponseEntity<String>(exists, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createConfirmedRoute", method = RequestMethod.GET)
@@ -308,7 +312,7 @@ public class RootController {
     }
 
     @RequestMapping(value = "/proposeTrafficCreation", method = RequestMethod.GET)
-    public ResponseEntity proposeTrafficCreation(@RequestParam(value = "origin", required = true) String origin,
+    public ResponseEntity<String> proposeTrafficCreation(@RequestParam(value = "origin", required = true) String origin,
                                                  @RequestParam(value = "destination", required = true) String destination) {
 
         String exists = "No";
@@ -317,7 +321,7 @@ public class RootController {
                 exists = "Yes";
             }
         }
-        return new ResponseEntity(exists, HttpStatus.OK);
+        return new ResponseEntity<String>(exists, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/createConfirmedTraffic", method = RequestMethod.GET)
