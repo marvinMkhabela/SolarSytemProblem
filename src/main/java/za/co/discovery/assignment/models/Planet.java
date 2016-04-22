@@ -15,14 +15,17 @@ public class Planet implements Serializable {
     private String node;
     @Column
     private String name;
+    @Column
+    private int numericIdx;
 
-    public Planet(){
+    protected Planet() {
 
     }
 
-    public Planet(String node, String name){
+    public Planet(String node, String name, int numericIdx) {
         this.node = node;
         this.name = name;
+        this.numericIdx = numericIdx;
     }
 
     public String getNode() {
@@ -31,6 +34,10 @@ public class Planet implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public int getNumericIdx() {
+        return numericIdx;
     }
 
 }

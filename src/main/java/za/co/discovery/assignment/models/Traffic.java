@@ -17,6 +17,9 @@ public class Traffic implements Serializable{
     @Column
     private double delay;
 
+    protected Traffic() {
+    }
+
     public Traffic(int trafficId, Planet origin, Planet destination, double delay) {
 
         this.trafficId = trafficId;

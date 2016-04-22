@@ -16,6 +16,11 @@ public class Route implements Serializable{
     private Planet destination;
     @Column
     private double distance;
+    @Column
+    private double totalTravelTime;
+
+    protected Route() {
+    }
 
     public Route(int routeId, Planet origin, Planet destination, double distance){
 
@@ -23,6 +28,7 @@ public class Route implements Serializable{
         this.origin = origin;
         this.destination = destination;
         this.distance = distance;
+        this.totalTravelTime = distance;
     }
 
     public int getRouteId(){
@@ -39,5 +45,13 @@ public class Route implements Serializable{
 
     public double getDistance() {
         return distance;
+    }
+
+    public double getTotalTravelTime() {
+        return totalTravelTime;
+    }
+
+    public void appendTrafficDelay(double delay) {
+        this.totalTravelTime += delay;
     }
 }

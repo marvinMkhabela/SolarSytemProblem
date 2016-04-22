@@ -38,7 +38,7 @@ public class PlanetDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet planet = new Planet("A", "Earth");
+        Planet planet = new Planet("A", "Earth", 1);
 
         // Exercise Fixture
         planetDAO.savePlanet(planet);
@@ -55,8 +55,8 @@ public class PlanetDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth");
-        Planet secondPlanet = new Planet("B", "Moon");
+        Planet firstPlanet = new Planet("A", "Earth", 1);
+        Planet secondPlanet = new Planet("B", "Moon", 2);
         session.save(firstPlanet);
         session.save(secondPlanet);
 
@@ -73,7 +73,7 @@ public class PlanetDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        List<Planet> planets = Arrays.asList(new Planet("A", "Earth"), new Planet("B", "Moon"));
+        List<Planet> planets = Arrays.asList(new Planet("A", "Earth", 1), new Planet("B", "Moon", 2));
         session.save(planets.get(0));
         session.save(planets.get(1));
 
@@ -89,8 +89,8 @@ public class PlanetDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet originalPlanet = new Planet("A", "Big Blue");
-        Planet expectedPlanet = new Planet("A", "Earth");
+        Planet originalPlanet = new Planet("A", "Big Blue", 1);
+        Planet expectedPlanet = new Planet("A", "Earth", 1);
         session.save(originalPlanet);
 
         // Exercise SUT
@@ -108,8 +108,8 @@ public class PlanetDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth");
-        Planet secondPlanet = new Planet("B", "Moon");
+        Planet firstPlanet = new Planet("A", "Earth", 1);
+        Planet secondPlanet = new Planet("B", "Moon", 2);
         List<Planet> expectedPlanet = Collections.singletonList(firstPlanet);
         session.save(firstPlanet);
         session.save(secondPlanet);

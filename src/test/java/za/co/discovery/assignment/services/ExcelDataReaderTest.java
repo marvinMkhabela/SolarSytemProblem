@@ -3,7 +3,6 @@ package za.co.discovery.assignment.services;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -12,8 +11,6 @@ import za.co.discovery.assignment.models.Planet;
 import za.co.discovery.assignment.models.Route;
 import za.co.discovery.assignment.models.Traffic;
 
-import javax.annotation.Resource;
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +25,7 @@ public class ExcelDataReaderTest {
 
     @Autowired
     private ExcelDataReader excelDataReader;
-    private List<Planet> planets = Arrays.asList(new Planet("A", "Earth"), new Planet("B", "Moon"));
+    private List<Planet> planets = Arrays.asList(new Planet("A", "Earth", 0), new Planet("B", "Moon", 1));
 
 
     @Test

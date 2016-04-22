@@ -42,8 +42,8 @@ public class TrafficDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet origin = new Planet("A", "Earth");
-        Planet destination = new Planet("B", "Moon");
+        Planet origin = new Planet("A", "Earth", 1);
+        Planet destination = new Planet("B", "Moon", 2);
         planetDAO.savePlanet(origin);
         planetDAO.savePlanet(destination);
         Traffic traffic = new Traffic(1, origin, destination, 3);
@@ -63,8 +63,8 @@ public class TrafficDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth");
-        Planet secondPlanet = new Planet("B", "Moon");
+        Planet firstPlanet = new Planet("A", "Earth", 1);
+        Planet secondPlanet = new Planet("B", "Moon", 2);
         planetDAO.savePlanet(firstPlanet);
         planetDAO.savePlanet(secondPlanet);
         Traffic firstTraffic = new Traffic(1, firstPlanet, secondPlanet, 2);
@@ -85,8 +85,8 @@ public class TrafficDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth");
-        Planet secondPlanet = new Planet("B", "Moon");
+        Planet firstPlanet = new Planet("A", "Earth", 1);
+        Planet secondPlanet = new Planet("B", "Moon", 2);
         planetDAO.savePlanet(firstPlanet);
         planetDAO.savePlanet(secondPlanet);
         Traffic firstTraffic = new Traffic(1, firstPlanet, secondPlanet, 5);
@@ -108,8 +108,8 @@ public class TrafficDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth");
-        Planet secondPlanet = new Planet("B", "Moon");
+        Planet firstPlanet = new Planet("A", "Earth", 1);
+        Planet secondPlanet = new Planet("B", "Moon", 2);
         planetDAO.savePlanet(firstPlanet);
         planetDAO.savePlanet(secondPlanet);
         Traffic originalTraffic = new Traffic(1, firstPlanet, secondPlanet, 11);
@@ -131,8 +131,8 @@ public class TrafficDaoIT {
 
         // Set Up Fixture
         Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth");
-        Planet secondPlanet = new Planet("B", "Moon");
+        Planet firstPlanet = new Planet("A", "Earth", 1);
+        Planet secondPlanet = new Planet("B", "Moon", 2);
         planetDAO.savePlanet(firstPlanet);
         planetDAO.savePlanet(secondPlanet);
         Traffic firstTraffic = new Traffic(1, firstPlanet, secondPlanet, 17);

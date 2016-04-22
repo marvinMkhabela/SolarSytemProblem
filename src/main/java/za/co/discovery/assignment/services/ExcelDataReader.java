@@ -36,6 +36,7 @@ public class ExcelDataReader {
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
 
+            int numericIdx = 0;
             Planet planet;
             String nodeHolder;
             Cell cell;
@@ -49,9 +50,10 @@ public class ExcelDataReader {
                 cell = cellIterator.next();
                 nodeHolder = cell.getStringCellValue();
                 cell = cellIterator.next();
-                planet = new Planet(nodeHolder, cell.getStringCellValue());
+                planet = new Planet(nodeHolder, cell.getStringCellValue(), numericIdx);
 
                 objectList.add(planet);
+                numericIdx++;
             }
         }
         catch (FileNotFoundException e) {
