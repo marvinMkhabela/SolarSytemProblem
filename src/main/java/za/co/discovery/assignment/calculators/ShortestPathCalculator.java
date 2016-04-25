@@ -55,8 +55,6 @@ public class ShortestPathCalculator {
                         rawPaths[neighbour.getNumericIdx()] = alternatePath;
                         distances[neighbour.getNumericIdx()] = alternateDistance;
                     }
-                } else {
-                    System.out.println("\n\n\n" + " Source : " + r.getOrigin().getName() + " Destination :" + r.getDestination().getName());
                 }
 
             }

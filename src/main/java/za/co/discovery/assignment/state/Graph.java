@@ -21,9 +21,9 @@ public class Graph {
     public void appendTrafficData() {
 
         for (Traffic t : traffic) {
-            routes.stream().filter(r -> r.getRouteId() == t.getTrafficId()).forEach(r -> {
-                r.appendTrafficDelay(t.getDelay());
-            });
+            routes.stream().filter(r -> r.getOrigin().equals(t.getOrigin()) &&
+                    r.getDestination().equals(t.getDestination()))
+                    .forEach(r -> r.appendTrafficDelay(t.getDelay()));
         }
     }
 

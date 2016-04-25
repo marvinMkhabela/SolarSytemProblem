@@ -160,6 +160,7 @@ public class ExcelDataReader {
         for(Planet p : planets) {
             if (node.equals(p.getNode())) {
                 planet = p;
+                break;
             }
         }
 

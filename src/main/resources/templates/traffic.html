@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <title>View Traffic</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Discovery Galaxy</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/planets">Planets</a></li>
+            <li class="active"><a href="/routes">Routes</a></li>
+            <li class="active"><a href="/traffic">Traffic</a></li>
+            <li class="active"><a href="/paths">Paths</a></li>
+        </ul>
+    </div>
+</nav>
+<br/>
+
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr class="danger">
+            <td>Traffic ID</td>
+            <td>Origin</td>
+            <td>Destination</td>
+            <td>Delay (in light years)</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="t,iterationStatus  : ${traffic}">
+            <td th:text="${t.trafficId}"></td>
+            <td th:text="${t.origin.name}"></td>
+            <td th:text="${t.destination.name}"></td>
+            <td th:text="${t.delay}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>
