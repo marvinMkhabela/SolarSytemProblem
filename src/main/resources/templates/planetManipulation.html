@@ -5,12 +5,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <title>Planet Manipulation</title>
+    <title>Configure Planets</title>
 </head>
 
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Discovery Galaxy</a>
@@ -22,16 +22,22 @@
             <li class="active"><a href="/traffic">Traffic</a></li>
             <li class="active"><a href="/paths">Paths</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/admin"> <span class="glyphicon-user"></span>Admin</a></li>
+        </ul>
     </div>
 </nav>
 
-<div class="container" id="planetEdit">
+<div th:switch="${message}" class="container">
+    <p th:case="'Success!'" style="color: green" th:text="${message}"/>
 
-
+    <p th:case="*" style="color: red" th:text="${message}"/>
 </div>
 
 <div class="container" id="planetCreate">
-    <form class="form-inline" th:action="@{/editPlanet}" th:object="${planet}" method="post">
+    <h3>Create a planet :</h3>
+
+    <form class="form-inline" th:action="@{/createPlanet}" th:object="${planet}" method="post">
 
         <div class="form-group">
             <label>New Planet Node</label>
@@ -42,14 +48,54 @@
             <label>New Planet name :</label>
             <input type="text" class="form-control" th:field="*{name}" name="node"/>
         </div>
-        <button type="submit" class="btn btn-warning">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
-
 </div>
+<br/>
+
+<div class="container" id="planetEdit">
+    <h3>Edit a planet :</h3>
+    <form class="form-inline" th:action="@{/editPlanet}" th:object="${planet}" method="post">
+
+        <div class="form-group">
+            <label>Select target planet :</label>
+            <select th:field="*{node}">
+                <option th:each="p : ${planets}" th:value="${p.node}" th:text="${p.name}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Planet new name :</label>
+            <input class="form-control" type="text" th:field="*{name}"/>
+        </div>
+        <button type="submit" class="btn btn-warning">Submit</button>
+
+    </form>
+</div>
+<br/>
 
 <div class="container" id="planetDelete">
+    <h3>Delete Planet :</h3>
 
+    <form class="form-vertical" th:action="@{/deletePlanet}" th:object="${planet}" method="post">
 
+        <div class="form-group">
+            <label>Please select a target planet :</label>
+            <select th:field="*{node}">
+                <option th:each="p : ${planets}" th:value="${p.node}" th:text="${p.name}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Please enter planet name to confirm delete:</label>
+            <input th:field="*{name}" class="form-control" type="text"/>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Submit</button>
+        </div>
+
+    </form>
 </div>
 
 </body>

@@ -73,11 +73,13 @@ public class DTOServiceTest {
         // Set Up fixture
         Route expectedRoute = new Route(3, new Planet("A", "Earth", 0), new Planet("B", "Moon", 1), 0.44);
         RouteDTO routeDTO = new RouteDTO();
+        routeDTO.setRouteId(3);
         routeDTO.setOrigin("Earth");
         routeDTO.setDestination("Moon");
         routeDTO.setDistance(0.44);
 
         RouteDTO nullRouteDTO = new RouteDTO();
+        nullRouteDTO.setRouteId(2);
         nullRouteDTO.setOrigin("Earth");
         nullRouteDTO.setDestination("Saturn");
         nullRouteDTO.setDistance(0);
@@ -97,6 +99,7 @@ public class DTOServiceTest {
         // Set Up Fixture
         Traffic expectedTraffic = new Traffic(3, new Planet("A", "Earth", 0), new Planet("B", "Moon", 1), 0.44);
         TrafficDTO trafficDTO = new TrafficDTO();
+        trafficDTO.setTrafficId(3);
         trafficDTO.setOrigin("Earth");
         trafficDTO.setDestination("Moon");
         trafficDTO.setDelay(0.44);

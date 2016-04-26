@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import za.co.discovery.assignment.models.Planet;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @Transactional
@@ -51,7 +52,7 @@ public class PlanetDAO {
         session.merge(planet);
     }
 
-    public void deletePlanet(Planet planet) {
+    public void deletePlanet(Planet planet) throws ConstraintViolationException {
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(planet);

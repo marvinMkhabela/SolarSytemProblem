@@ -10,7 +10,6 @@ public class ResourceConfig {
 
     @Bean
     public File getFileResource() {
-
         ClassLoader classLoader = this.getClass().getClassLoader();
         File file = new File(classLoader.getResource("worksheet.xlsx").getFile());
 

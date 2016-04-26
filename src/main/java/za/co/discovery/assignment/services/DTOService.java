@@ -58,8 +58,6 @@ public class DTOService {
             return null;
         } else {
             List<Planet> planets = planetDAO.retrieveAll();
-            List<Route> routes = routeDAO.retrieveAll();
-            int routeId = routes.size() + 1;
             Planet origin = null;
             String dtoOrigin = routeDTO.getOrigin();
             Planet destination = null;
@@ -76,7 +74,7 @@ public class DTOService {
             if (origin == null || destination == null) {
                 return null;
             } else {
-                return new Route(routeId, origin, destination, routeDTO.getDistance());
+                return new Route(routeDTO.getRouteId(), origin, destination, routeDTO.getDistance());
             }
         }
     }
@@ -87,8 +85,6 @@ public class DTOService {
             return null;
         } else {
             List<Planet> planets = planetDAO.retrieveAll();
-            List<Traffic> traffic = trafficDAO.retrieveAll();
-            int trafficId = traffic.size() + 1;
             Planet origin = null;
             String dtoOrigin = trafficDTO.getOrigin();
             Planet destination = null;
@@ -105,7 +101,7 @@ public class DTOService {
             if (origin == null || destination == null) {
                 return null;
             } else {
-                return new Traffic(trafficId, origin, destination, trafficDTO.getDelay());
+                return new Traffic(trafficDTO.getTrafficId(), origin, destination, trafficDTO.getDelay());
             }
         }
     }

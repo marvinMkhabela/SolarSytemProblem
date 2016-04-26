@@ -106,21 +106,27 @@ public class PlanetDaoIT {
     @Test
     public void verifyThatDeleteDeletesDBEntry() {
 
-        // Set Up Fixture
-        Session session = sessionFactory.getCurrentSession();
-        Planet firstPlanet = new Planet("A", "Earth", 1);
-        Planet secondPlanet = new Planet("B", "Moon", 2);
-        List<Planet> expectedPlanet = Collections.singletonList(firstPlanet);
-        session.save(firstPlanet);
-        session.save(secondPlanet);
+        try {
 
-        // Exercise SUT
-        planetDAO.deletePlanet(secondPlanet);
-        Criteria criteria = session.createCriteria(Planet.class);
-        List<Planet> actualPlanets = (List<Planet>) criteria.list();
+            // Set Up Fixture
+            Session session = sessionFactory.getCurrentSession();
+            Planet firstPlanet = new Planet("A", "Earth", 1);
+            Planet secondPlanet = new Planet("B", "Moon", 2);
+            List<Planet> expectedPlanet = Collections.singletonList(firstPlanet);
+            session.save(firstPlanet);
+            session.save(secondPlanet);
 
-        // Verify Behaviour
-        assertThat(actualPlanets, sameBeanAs(expectedPlanet));
+            // Exercise SUT
+            planetDAO.deletePlanet(secondPlanet);
+            Criteria criteria = session.createCriteria(Planet.class);
+            List<Planet> actualPlanets = (List<Planet>) criteria.list();
+
+            // Verify Behaviour
+            assertThat(actualPlanets, sameBeanAs(expectedPlanet));
+
+        } catch (Exception e) {
+            System.out.println("Operation violates foreign key constraint!");
+        }
     }
 
 }

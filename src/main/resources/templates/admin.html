@@ -5,7 +5,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <title>Home Page</title>
+    <title>Administration</title>
 </head>
 
 <body>
@@ -29,28 +29,30 @@
 </nav>
 <br/>
 
-<h2>Welcome to the Interstellar Transport System Website.</h2>
-<h5>Please select a menu item below</h5>
-
 <div class="container">
-    <button class="btn btn-info" type="button" onclick="location.href='/planets'">Planets</button>
-</div>
-<br/>
+    <h3>What would you like to alter?</h3>
 
-<div class="container">
-    <button class="btn btn-info" type="button" onclick="location.href='/routes'">Routes</button>
-</div>
-<br/>
+    <div>
+        <p style="color: red">Warning!!! these operations will alter data and cannot be reversed.</p>
+    </div>
+    <br/>
 
-<div class="container">
-    <button class="btn btn-info" type="button" onclick="location.href='/traffic'">Traffic</button>
-</div>
-<br/>
+    <div>
+        <button class="btn btn-danger" onclick="window.location.href='/planetManipulation'">Planets</button>
+    </div>
+    <br/>
 
-<div class="container">
-    <button class="btn btn-info" type="button" onclick="location.href='/paths'">Paths</button>
+    <div>
+        <button class="btn btn-danger" onclick="window.location.href='/routeManipulation'">Routes</button>
+    </div>
+    <br/>
+
+    <div>
+        <button class="btn btn-danger" onclick="window.location.href='/trafficManipulation'">Traffic</button>
+    </div>
+
 </div>
-<br/>
+
 
 </body>
 
