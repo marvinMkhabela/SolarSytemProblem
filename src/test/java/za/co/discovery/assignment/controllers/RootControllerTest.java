@@ -569,7 +569,7 @@ public class RootControllerTest {
         resultActions.andExpect(view().name("admin"));
     }
 
-    public void setUpFixture() {
+    private void setUpFixture() {
 
         planets = Arrays.asList(new Planet("A", "Earth", 0), new Planet("B", "Moon", 1), new Planet("C", "Jupiter", 2));
         routes = Arrays.asList(new Route(1, planets.get(0), planets.get(1), 0.44),
