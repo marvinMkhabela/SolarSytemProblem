@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50a2dc04-827e-405d-9cf1-5f2718a336dd" name="Default" comment="Add delete feature to client side">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/travis.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/za/co/discovery/assignment/configurations/ResourceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/za/co/discovery/assignment/configurations/ResourceConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/za/co/discovery/assignment/controllers/RootControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/za/co/discovery/assignment/controllers/RootControllerTest.java" />
+    <list default="true" id="50a2dc04-827e-405d-9cf1-5f2718a336dd" name="Default" comment="Add travis yamal file">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/travis.yml" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DiscoveryGalaxy.iws" />
@@ -41,11 +39,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RootControllerTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RootControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/za/co/discovery/assignment/controllers/RootControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82">
+            <state vertical-scroll-proportion="0.0">
               <caret line="481" column="57" selection-start-line="481" selection-start-column="57" selection-end-line="481" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.03">
+              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -899,7 +907,7 @@
       <workItem from="1461305280674" duration="1862000" />
       <workItem from="1461307158926" duration="19580000" />
       <workItem from="1461396841573" duration="25509000" />
-      <workItem from="1461652789339" duration="27249000" />
+      <workItem from="1461652789339" duration="27514000" />
     </task>
     <task id="LOCAL-00001" summary="Add database persistence with tests">
       <created>1461233321763</created>
@@ -931,11 +939,17 @@
       <option name="project" value="LOCAL" />
       <updated>1461679627739</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add travis yamal file">
+      <created>1461680185939</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1461680185939</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103957000" />
+    <option name="totallyTimeSpent" value="104222000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1985" y="24" width="1855" height="1056" extended-state="6" />
@@ -951,7 +965,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978564" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3279743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328911" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328911" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1016,7 +1030,8 @@
     <MESSAGE value="Add shortest Path algorithm" />
     <MESSAGE value="Add DTO and DTOService" />
     <MESSAGE value="Add delete feature to client side" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add delete feature to client side" />
+    <MESSAGE value="Add travis yamal file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add travis yamal file" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1485,18 +1500,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/travis.yml">
+    <entry file="file://$PROJECT_DIR$/src/test/java/za/co/discovery/assignment/controllers/RootControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="481" column="57" selection-start-line="481" selection-start-column="57" selection-end-line="481" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/za/co/discovery/assignment/controllers/RootControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82">
-          <caret line="481" column="57" selection-start-line="481" selection-start-column="57" selection-end-line="481" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.03">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
           <folding />
         </state>
       </provider>
